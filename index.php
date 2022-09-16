@@ -1,4 +1,23 @@
-<?php include_once 'includes/header.php'; ?>
+<?php 
+session_start();
+if(isset($_SESSION['mensagem'])):?>
+	<!--<div class="alert alert-primary" role="alert">
+  	 	<?php echo $_SESSION['mensagem']; ?>
+	</div>-->
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  <strong>Angola Docs!</strong> <?php echo $_SESSION['mensagem']; ?>
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+</div>
+<?php
+endif;  
+session_unset();
+include_once 'php_action/db_connect.php';
+
+include_once 'includes/header.php'; 
+
+?>
 	<div class="container">
 		<h1>Sistema de validação de Documentação de Angola</h1><br>
 		<hr>		
@@ -22,47 +41,55 @@
 		      <th scope="col">N do Passaporte</th>
 		      <th scope="col">Matricula do Carro</th>
 		    </tr>
-		    </tr>
-		    </tr>
-		    </tr>
 		  </thead>
 		  <tbody>
+		  	<?php 
+		  		$sql = "SELECT * FROM people";
+		  		$resultado = mysqli_query($connect, $sql);
+
+		  		if(mysqli_num_rows($resultado) > 0):
+
+		  		while($dados = mysqli_fetch_array($resultado)):
+		  	?>
 		    <tr>
-		      <th scope="row">1</th>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td> 
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td>		      
-		      <td>Otto</td>
+		      <th scope="row"><?php echo $dados['id']; ?></th>
+		      <td><?php echo $dados['nome']; ?></td>
+		      <td><?php echo $dados['email']; ?></td>
+		      <td><?php echo $dados['idade']; ?></td>
+		      <td><?php echo $dados['cidade']; ?></td>
+		      <td><?php echo $dados['telefone']; ?></td>
+		      <td><?php echo $dados['celular']; ?></td> 
+		      <td><?php echo $dados['cep']; ?></td>
+		      <td><?php echo $dados['bi']; ?></td>
+		      <td><?php echo $dados['nif']; ?></td>
+		      <td><?php echo $dados['salario']; ?></td>
+		      <td><?php echo $dados['carta']; ?></td>
+		      <td><?php echo $dados['passaporte']; ?></td>		      
+		      <td><?php echo $dados['carro']; ?></td>
 		      <td><a href="ed.php" class=""><i class="bi bi-pencil-fill"></i></a></td>
 			 <td><a href="#" class=""><i class="bi bi-trash-fill"></i></a></td>
 		    </tr>
+		    <?php 
+		    endwhile;
+		    else:?>
 		    <tr>
-		      <th scope="row">2</th>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		      <td>Jacob</td>
-		      <td><a href="" class=""><i class="bi bi-pencil-fill"></i></a></td>
-			 <td><a href="#" class=""><i class="bi bi-trash-fill"></i></a></td>
-		    </tr>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				<td>-</td>
+				</tr>
+				<?php
+				endif;
+				?>		  
 		  </tbody>
 		</table>
 	</div>

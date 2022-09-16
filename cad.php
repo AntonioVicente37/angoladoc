@@ -4,14 +4,13 @@
 		<hr>
 		<h2>Cadastro de documentação Angolana</h2>				
 		<a class="btn btn-primary" href="index.php" role="button">Lista de Documentos Cadastrados</a><br>		
-	
-		<form action="" name="formCadastro" id="formCadastro" method="post">
+		<form action="php_action/create.php" name="formCadastro" id="formCadastro" method="POST">
 			<div class="row">
 				<div class="col">
-					<label>Nome</label>
+					<label>Nome</label>  
 					<input type="text" name="nome" id="nome" class="form-control" required />
 				</div>
-				<div class="col">
+				<div class="col">  
 					<label>E-mail</label>
 					<input type="email" name="email" id="email" class="form-control"/>
 				</div>
@@ -28,6 +27,10 @@
 						<option value="Luanda">Luanda</option>
 						<option value="Cazenga">Cazenga</option>
 						<option value="Viana">Viana</option>
+						<option value="Benfica">Benfica</option>
+						<option value="Ingombotas">Ingombotas</option>
+						<option value="Talatona">Talatona</option>						
+						<option value="Kilamba Kiaxi">Kilamba Kiaxi</option>
 					</select>
 				</div>
 			</div>		
@@ -74,7 +77,7 @@
 				</div>
 			</div><br>	
 			<div class="row">
-				<input type="submit" name="enviar" id="enviar" class="btn btn-primary form-control"/>
+				<input type="submit" name="btn-enviar" id="btn-enviar" class="btn btn-primary form-control"/>
 			</div>
 		</form>
 	</div>
